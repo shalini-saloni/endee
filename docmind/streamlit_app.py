@@ -23,7 +23,7 @@ if "uploaded_docs" not in st.session_state:
     st.session_state.uploaded_docs = []   # list of doc_name strings
 
 with st.sidebar:
-    st.image("../docs/assets/logo-light.svg",
+    st.image("assets/logo-light.svg",
              use_column_width=True, caption="Powered by Endee Vector DB")
 
     st.title("DocMind")
