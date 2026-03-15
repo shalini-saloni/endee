@@ -1,0 +1,45 @@
+Python Programming: From Basics to Advanced
+
+Python Fundamentals
+
+Python is a high-level, interpreted programming language known for its simplicity and readability. Created by Guido van Rossum and first released in 1991, Python emphasizes code readability with its clean syntax. Python is dynamically typed, meaning you don't need to declare variable types explicitly. It supports multiple programming paradigms including procedural, object-oriented, and functional programming.
+
+Data Types and Variables
+
+Python has several built-in data types. Integers (int) store whole numbers like 42 or -7. Floats (float) store decimal numbers like 3.14. Strings (str) store text enclosed in single or double quotes. Booleans (bool) are either True or False. Lists store ordered mutable collections. Tuples are ordered immutable collections. Dictionaries (dict) store key-value pairs. Sets store unordered collections of unique elements.
+
+Functions and Modules
+
+Functions in Python are defined with the def keyword. They can accept parameters and return values using the return statement. Python supports default parameter values, keyword arguments, *args for variable positional arguments, and **kwargs for variable keyword arguments. Lambda functions are small anonymous functions defined with the lambda keyword. Python's module system allows you to organize code into reusable files, imported with the import statement.
+
+Object-Oriented Programming
+
+Python supports object-oriented programming through classes. A class is defined with the class keyword and can have attributes (data) and methods (functions). The __init__ method is the constructor, called when a new instance is created. Python supports inheritance, where a child class inherits attributes and methods from a parent class. Multiple inheritance is also supported. Magic methods (dunder methods) like __str__, __len__, and __add__ allow custom behavior for built-in operations.
+
+Python for Data Science
+
+Python is the dominant language for data science and machine learning. NumPy provides efficient N-dimensional array operations. Pandas offers powerful data manipulation with DataFrames. Matplotlib and Seaborn are used for data visualization. Scikit-learn provides classical machine learning algorithms. TensorFlow and PyTorch are deep learning frameworks. Jupyter Notebooks provide an interactive environment for data exploration and analysis.
+
+Asynchronous Programming
+
+Python supports asynchronous programming with the asyncio library, the async and await keywords. Asynchronous code allows multiple tasks to run concurrently without blocking, making it ideal for I/O-bound operations like web requests and file operations. FastAPI, a modern Python web framework, is built on top of async/await and provides excellent performance for building APIs.
+
+Error Handling
+
+Python uses try-except blocks for error handling. The try block contains code that might raise an exception. The except block handles specific exceptions. The else block runs if no exception was raised. The finally block always runs, regardless of whether an exception occurred. Custom exceptions can be created by subclassing the Exception class. Common built-in exceptions include ValueError, TypeError, KeyError, IndexError, and FileNotFoundError.
+
+Python Virtual Environments
+
+Virtual environments are isolated Python environments that allow you to install packages for a specific project without affecting the global Python installation. The venv module (built-in since Python 3.3) creates virtual environments. You activate a virtual environment with source venv/bin/activate on Linux/Mac or venv\Scripts\activate on Windows. pip is the package installer for Python, used to install packages from PyPI (Python Package Index).
+
+Testing in Python
+
+Python has a built-in unittest module for writing tests. pytest is a popular third-party testing framework that is simpler and more powerful. Tests are functions that start with test_ and assert expected outcomes. Fixtures in pytest provide reusable setup code. Mocking allows you to replace real objects with fake ones during testing. Test coverage measures how much of your code is executed during tests.
+
+Type Hints and Static Analysis
+
+Python 3.5+ supports type hints that allow you to annotate function parameters and return values with their expected types. While Python doesn't enforce these at runtime, tools like mypy can statically analyze code to catch type errors. Type hints improve code readability and enable better IDE support. The typing module provides advanced type constructs like List, Dict, Optional, Union, and Tuple.
+
+Popular Python Libraries for AI
+
+The Python ecosystem for AI is rich. sentence-transformers makes it easy to generate sentence embeddings for semantic similarity tasks. LangChain provides tools for building LLM applications including chains, agents, and document loaders. OpenAI's Python library provides access to GPT models. Hugging Face's transformers library gives access to thousands of pre-trained models. FastAPI is the go-to framework for building high-performance AI APIs. Streamlit enables rapid creation of interactive data applications and demos.

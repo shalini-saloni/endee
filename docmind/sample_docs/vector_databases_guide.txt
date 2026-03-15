@@ -1,0 +1,45 @@
+Vector Databases: A Complete Guide
+
+Introduction to Vector Databases
+
+A vector database is a type of database that stores data as high-dimensional vectors, which are mathematical representations of features or attributes. Each vector has a certain number of dimensions, which can range from tens to thousands, depending on the complexity of the data being represented. Vector databases are specifically designed for fast similarity searches — finding items that are "closest" in meaning or characteristics to a given query.
+
+Why Vector Databases Matter for AI
+
+Traditional relational databases (MySQL, PostgreSQL) and NoSQL databases (MongoDB, Redis) are optimized for exact lookups and structured queries. They cannot efficiently answer questions like "find me the 10 most similar documents to this one." Vector databases fill this gap by enabling semantic similarity search at scale, which is critical for AI applications.
+
+How Vectors Are Created
+
+Vectors are generated using embedding models — neural networks trained to produce compact numerical representations of data. For text, models like sentence-transformers, OpenAI's text-embedding-ada-002, or Google's textembedding-gecko convert sentences and paragraphs into dense float vectors. For images, models like CLIP or ResNet produce visual embeddings. The key property is that semantically similar items produce vectors that are close together in the vector space.
+
+Approximate Nearest Neighbor (ANN) Search
+
+Finding the exact nearest neighbor in a high-dimensional space requires comparing a query vector against every stored vector, which is computationally expensive (O(n) linear scan). ANN algorithms trade a small amount of accuracy for dramatically faster search. The most popular ANN algorithm is HNSW (Hierarchical Navigable Small World), a graph-based approach that builds a multi-layer graph structure for efficient traversal. Other algorithms include IVF (Inverted File Index), LSH (Locality Sensitive Hashing), and PQ (Product Quantization).
+
+Distance Metrics
+
+Vector similarity is measured using distance metrics. Cosine similarity measures the angle between two vectors — it is 1 for identical vectors and 0 for orthogonal ones, making it ideal for text embeddings where only direction matters, not magnitude. Euclidean distance (L2) measures the straight-line distance between two points in space. Inner product (dot product) is used when vector magnitudes are meaningful, such as in recommendation systems.
+
+Endee Vector Database
+
+Endee is a high-performance vector database designed for speed and efficiency. It enables rapid Approximate Nearest Neighbor searches using the HNSW algorithm. Key features of Endee include support for multiple distance metrics (cosine, L2, inner product), metadata storage for each vector, advanced filtering with operators like $eq, $in, and $range, multiple quantization levels (BINARY, INT8, INT16, FLOAT16, FLOAT32), hybrid search combining dense and sparse vectors, and a clean Python SDK.
+
+Using Endee in Python
+
+The Endee Python SDK makes it straightforward to create indexes, insert vectors, and perform searches. You initialize the client with the Endee() constructor which connects to a locally running Endee server. You create an index by specifying the name, vector dimension, space type, and precision level. You insert vectors using the upsert() method, passing a list of dictionaries with id, vector, meta, and filter fields. Searching is done with the query() method, returning the top-k most similar vectors.
+
+Quantization in Endee
+
+Quantization reduces the memory footprint of stored vectors by representing float values with fewer bits. INT8 quantization stores each dimension as an 8-bit integer instead of a 32-bit float, reducing memory by 4x with minimal accuracy loss. INT16 provides a middle ground between INT8 and FLOAT32. BINARY quantization is the most aggressive, storing each dimension as a single bit. Endee supports all five levels: BINARY, INT8, INT16, FLOAT16, and FLOAT32.
+
+Hybrid Search
+
+Hybrid search combines dense vector search (semantic similarity) with sparse vector search (keyword matching). Dense vectors capture meaning while sparse vectors capture exact term matches. In Endee, hybrid indexes are created by specifying both dimension (for dense vectors) and sparse_dim (for the sparse vocabulary size). During search, both dense and sparse query vectors are provided and scores are combined.
+
+Metadata and Filtering
+
+One of the most useful features of vector databases is the ability to attach metadata to each vector and filter search results based on that metadata. In Endee, each vector can have a meta dictionary (for storing text, timestamps, and other fields) and a filter dictionary (for fields used in filtered queries). For example, you can restrict a search to only vectors where category equals "technology" or score is in the range 80 to 100.
+
+RAG Applications with Vector Databases
+
+In a RAG (Retrieval-Augmented Generation) system, the vector database serves as the long-term memory of the application. Documents are split into chunks, embedded, and stored in the vector database. When a user asks a question, the question is embedded and the most similar chunks are retrieved. These chunks are then passed as context to a language model, which generates a factual, grounded answer. This pattern dramatically reduces LLM hallucinations and allows the AI to answer questions about proprietary or recent information.

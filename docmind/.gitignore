@@ -26,10 +26,12 @@ Thumbs.db
 # Streamlit
 .streamlit/
 
-# Model cache (sentence-transformers downloads here)
+# Model cache
 ~/.cache/
 
-# Uploads (temp files)
+# Temporary uploads
 uploads/
 *.pdf
-*.txt
+
+# Allow demo documents
+!sample_docs/*.txt
