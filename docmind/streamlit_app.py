@@ -5,11 +5,15 @@ DocMind — Streamlit frontend.
 Run with:
     streamlit run streamlit_app.py
 """
+from pathlib import Path
 import streamlit as st
 import requests
 import os
 
 API_BASE = os.getenv("API_BASE_URL", "http://localhost:8000")
+
+BASE_DIR = Path(__file__).resolve().parent
+logo_path = BASE_DIR / "assets" / "logo-light.svg"
 
 st.set_page_config(
     page_title="DocMind – Document Q&A",
@@ -23,8 +27,7 @@ if "uploaded_docs" not in st.session_state:
     st.session_state.uploaded_docs = []   # list of doc_name strings
 
 with st.sidebar:
-    st.image("assets/logo-light.svg",
-             use_column_width=True, caption="Powered by Endee Vector DB")
+    st.image(str(logo_path), width=180)
 
     st.title("DocMind")
     st.caption("RAG-powered Document Q&A")
