@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 set -e
 
-echo "Starting DocMind services..."
+echo "Starting DocMind..."
 
-# Install dependencies
+echo "Installing dependencies..."
 pip install --upgrade pip
 pip install -r requirements.txt
 
 echo "Starting FastAPI backend..."
 
-uvicorn docmind.app.main:app \
+python -m uvicorn docmind.app.main:app \
 --host 0.0.0.0 \
 --port 8000 &
 
