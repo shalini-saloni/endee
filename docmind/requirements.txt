@@ -1,3 +1,5 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+
 numpy==1.26.4
 fastapi==0.111.0
 uvicorn[standard]==0.30.1
