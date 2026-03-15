@@ -7,20 +7,18 @@ echo "Installing dependencies..."
 pip install --upgrade pip
 pip install -r requirements.txt
 
-echo "Starting FastAPI backend..."
-
-python -m uvicorn docmind.app.main:app \
---host 0.0.0.0 \
---port 8000 &
-
+echo "Starting FastAPI backend on port 8000..."
+python -m uvicorn app.main:app \
+    --host 0.0.0.0 \
+    --port 8000 &
 API_PID=$!
 
-sleep 3
+# Give FastAPI time to start before Streamlit loads
+sleep 5
 
-echo "Starting Streamlit frontend..."
+echo "Starting Streamlit frontend on port $PORT..."
+streamlit run streamlit_app.py \
+    --server.port=$PORT \
+    --server.address=0.0.0.0
 
-streamlit run docmind/streamlit_app.py \
---server.port=$PORT \
---server.address=0.0.0.0
-
-kill $API_PID
+kill $API_PID 2>/dev/null || true
