@@ -34,7 +34,6 @@ def retrieve(
     query_vec = embed_query(query)
     raw_results = search(query_vec, top_k=top_k, doc_name=doc_name)
 
-    # Flatten meta into the result for convenience
     results = []
     for item in raw_results:
         meta = item.get("meta") or {}
