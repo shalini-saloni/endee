@@ -10,7 +10,7 @@ import streamlit as st
 import requests
 import os
 
-API_BASE = os.getenv("API_BASE_URL", "http://localhost:8000")
+API_BASE = os.getenv("API_BASE_URL", "http://127.0.0.1:8000")
 
 BASE_DIR = Path(__file__).resolve().parent
 logo_path = BASE_DIR / "assets" / "logo-light.svg"
